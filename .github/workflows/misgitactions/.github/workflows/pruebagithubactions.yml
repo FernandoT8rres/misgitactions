@@ -1,0 +1,17 @@
+name: GitHub Actions Practica
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: echo "El flujo de trabajo ha sido ejecutado en el evento: ${{ github.event_name }}"
+      - run: echo "El nombre de la rama es ${{ github.ref }} y su referencia es ${{ github.sha }}"
+      - run: echo "El trabajo esta ejecutando en un runner y tu repositorio es ${{ github.repository }}"
+      - name: Verificar y colar el numero
+        uses: actions/checkout@v2
+      - run: echo "El repositorio de Github ha sido colocado al runner."
+      - name: Listar archivos en el repositorio para verificar el código en el runner.
+        run:
+          ls ${{ github.workspace }}
+      - run: echo "El estado del trabajo es ${{ job.status }}"
